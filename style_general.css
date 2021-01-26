@@ -1,0 +1,16 @@
+.panorama {
+    position: relative;
+}
+
+.overlay{
+    position:absolute;
+    margin-top: 5%;
+    padding: 20px;
+    top:5%;
+    left:5%;
+    z-index: 1000;
+    width: 500px;
+    height: 500px;
+    background-color: rgba(61, 61, 61, 0.424);
+}
+

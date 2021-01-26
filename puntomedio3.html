@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<head>
+<title> El seductor punto medio </title>
+<script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+<script
+src="https://code.jquery.com/jquery-3.5.1.js"
+integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+crossorigin="anonymous">
+</script>
+
+<link rel="stylesheet" type="text/css" href="style_general.css">
+<meta charset="UTF-8">
+
+</head>
+<body>
+	<div class="panorama">
+		<script>
+			  AFRAME.registerComponent('scale-on-mouseenter', {
+    			schema: {
+      			to: {default: {x: 5, y: 5, z: 1}, type: 'vec3'}
+    			},
+
+    			init: function () {
+      			var data = this.data;
+      			var el = this.el;
+      			this.el.addEventListener('mouseenter', function () {
+        		el.object3D.scale.copy(data.to);
+      				});
+    			}
+  			});
+				AFRAME.registerComponent("mylink", {
+			  		init: function() {
+    				this.el.addEventListener("click", (e)=> {
+       				window.location = this.data.href;
+    				})
+  				}
+			})
+		</script>
+		<a-scene>
+			<a-sky src="panorama01.png"></a-sky>
+
+			<a-plane
+			src="puntomedio_03.png"
+			transparent=true
+			position="0 0 3"
+			rotation="-90 180 0"
+			scale="3 3 1"
+			animation__mouseenter="property: scale; to: 5 5 1; dur: 300; startEvents: mouseenter"
+			animation__mouseleave="property: scale; to: 4 4 1; dur: 300; startEvents: mouseleave"
+			mylink="href: ./puntomedio4">
+			</a-plane>
+			</a-link>
+			
+			<a-camera position="0 1.6 0">
+				<a-cursor></a-cursor>
+			</a-camera>
+		
+		</a-scene>
+		<div class="overlay">
+			<div id="disqus_thread"></div>
+			<script>
+				/**
+				*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+				*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+				/*
+				var disqus_config = function () {
+				this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+				this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+				};
+				*/
+				(function() { // DON'T EDIT BELOW THIS LINE
+				var d = document, s = d.createElement('script');
+				s.src = 'https://adrianrodriguez.disqus.com/embed.js';
+				s.setAttribute('data-timestamp', +new Date());
+				(d.head || d.body).appendChild(s);
+				})();
+			</script>
+			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+					</div>
+		</div>
+	</div>
+
+
+	
+</body>
+</html>
