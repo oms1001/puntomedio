@@ -3,6 +3,7 @@
 }
 
 .overlay{
+    overflow: scroll;
     position:absolute;
     margin-top: 5%;
     padding: 20px;
